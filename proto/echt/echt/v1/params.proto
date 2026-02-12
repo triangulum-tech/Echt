@@ -1,0 +1,14 @@
+syntax = "proto3";
+package echt.echt.v1;
+
+import "amino/amino.proto";
+import "gogoproto/gogo.proto";
+
+option go_package = "echt/x/echt/types";
+
+// Params defines the parameters for the module.
+message Params {
+  option (amino.name) = "echt/x/echt/Params";
+  option (gogoproto.equal) = true;
+  
+}

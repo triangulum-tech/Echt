@@ -1,0 +1,61 @@
+validation: sovereign
+version: 1
+build:
+    proto:
+        path: proto
+accounts:
+    - name: alice
+      coins:
+        - 1000000000000000000aecht
+    - name: bob
+      coins:
+        - 10000token
+        - 100000000aecht
+faucet:
+    name: bob
+    coins:
+        - 5token
+        - 100000stake
+    host: 0.0.0.0:4500
+client:
+    openapi:
+        path: docs/static/openapi.json
+default_denom: aecht
+validators:
+    - name: alice
+      bonded: 1000000000000000000aecht
+    - name: validator1
+      bonded: 200000000aecht
+      app:
+        api:
+            address: 0.0.0.0:1327
+        grpc:
+            address: 0.0.0.0:9100
+        grpc-web:
+            address: 0.0.0.0:9101
+        json-rpc:
+            enable: true
+            address: 127.0.0.1:8545
+            ws-address: 127.0.0.1:8546
+            api: "eth,web3,net,txpool,debug,personal"
+      config:
+        p2p:
+            laddr: 0.0.0.0:26666
+        rpc:
+            laddr: 0.0.0.0:26667
+            pprof_laddr: 0.0.0.0:6070
+    - name: validator2
+      bonded: 100000000aecht
+      app:
+        api:
+            address: 0.0.0.0:1337
+        grpc:
+            address: 0.0.0.0:9110
+        grpc-web:
+            address: 0.0.0.0:9111
+      config:
+        p2p:
+            laddr: 0.0.0.0:26676
+        rpc:
+            laddr: 0.0.0.0:26677
+            pprof_laddr: 0.0.0.0:6080
